@@ -1,6 +1,6 @@
 # Minesweeper
 
-The famous game of Minesweeper built with Angular.
+The famous game built with Angular.
 
 ## Prerequisites
 Before you begin, make sure your development environment includes:
