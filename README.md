@@ -2,26 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
 
-## Development server
+## Prerequisites
+Before you begin, make sure your development environment includes:
+* [Node.js®](https://nodejs.org/): Angular requires Node.js version 8.x or 10.x.
+* npm package manager: Angular, the Angular CLI, and Angular apps depend on features and functionality provided by libraries that are available as [npm packages](https://docs.npmjs.com/getting-started/what-is-npm).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Quick start
+1. Clone the repository: 
+```bash
+git clone https://github.com/laviniadd/Minesweeper.git
+```
+2. Change directory to repository:
+```bash
+cd Minesweeper
+```
+3. Use npm to install the dependencies:
+```bash
+npm install
+```
+4. Start the server:
+```bash
+ng serve
+```
+5. Navigate to http://localhost:4200/ in your browser.
