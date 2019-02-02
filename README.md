@@ -24,4 +24,4 @@ npm install
 ```bash
 ng serve
 ```
-5. Navigate to http://localhost:4200/ in your browser.
+5. Wait until it is compiled and then navigate to http://localhost:4200/ in your browser.
