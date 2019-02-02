@@ -11,7 +11,7 @@
             <input required type="number" min="0" max="50" matInput placeholder="Larghezza" oninput="validity.valid||(value='');" [ngModel]="this.campoDaGioco.width" #larghezza>
         </mat-form-field>
         <mat-form-field class="number-input">
-            <input required type="number" min="0" max="50" matInput placeholder="Numero mine" oninput="validity.valid||(value='');" [ngModel]="this.campoDaGioco.mines" #mine>
+            <input required type="number" min="0" max="2000" matInput placeholder="Numero mine" oninput="validity.valid||(value='');" [ngModel]="this.campoDaGioco.mines" #mine>
         </mat-form-field>
         <!-- Se il numero di mine inserito è troppo alto viene visualizzato questo messaggi di errore -->
         <div class="messaggio" *ngIf="errornumeroDiMine">Numero di mine troppo alto</div>
