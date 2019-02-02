@@ -1,0 +1,79 @@
+.modifica{
+    margin-top: 20px;
+    display: inline-block;
+}
+#bottoneModifica{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#bottoniAzione{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-style: double;
+   /* border: 3px solid gray;*/
+}
+.space{
+    margin: 10px;
+}
+.game-box{
+    margin: auto;
+    width: fit-content;
+    border: 3px solid gray;
+    padding: 10px;
+}
+.orizzontale{
+    display: inline-block;
+
+}
+.verticale{
+    display: flex;
+}
+.messaggio{
+    background-color: lightcoral;
+    margin: 30px auto;
+    width: 40%;
+    text-align: center;
+    border-radius: 25px;
+    color: white;
+}
+.messaggioVittoria{
+    background-color: lightgreen;
+    margin: 30px auto;
+    width: 50%;
+    text-align: center;
+    border-radius: 25px;
+    color: white;
+}
+.piastrella[disabled]{
+    color: white;
+    background-color: gray; 
+}
+.piastrella{
+
+    background-color: lightgray; 
+    border-style: groove;
+    min-width: 50px !important;
+    max-width: 50px !important;
+    line-height: 40px !important;
+    height: 40px;
+    text-align: center
+}
+.box{
+    background-color: powderblue;
+    width: 70px;
+    height: 40px;
+    margin: 20px;
+    border-radius: 4px;
+    line-height: 40px;
+    text-align: center;
+}
+.material-icons-flag{
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+}

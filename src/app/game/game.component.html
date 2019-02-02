@@ -1,0 +1,62 @@
+<!-- Ho inserito il componente toolbar -->
+<app-toolbar></app-toolbar>
+<div id ="bottoneModifica">
+  <!-- Una volta cliccato il bottone Modifica, setterà a true "modifica" -->
+  <button class="modifica" mat-raised-button color="primary" (click)="modifica = true" (click)="pauseTimer()">Modifica</button>
+</div>
+<div class="space"></div>
+<!-- Viene mostrato solo nel caso in cui "modifica" sia true -->
+<div *ngIf="modifica">
+  <!-- app-dialog è il componente che permette di gestire la modifica delle dimensioni del piano di gioco e il numero di mine, mette il tempo in pausa e lo fa ripartire -->
+  <app-dialog [campoDaGioco]="campoDaGioco" (childEventNewCampo)="campoDaGioco=$event" 
+  (childEventModifica)="modifica=$event" (childEventDisableMessaggi)="restartVariables()" 
+  (childEventRestartTimer)="restartTimer()" (childEventMineUnmarked)="mineUnmarked=$event">
+  </app-dialog>
+</div>
+<div id ="bottoniAzione">
+  <!-- Mostra il numero di mine non marcate sul display -->
+  <span class="box">{{mineUnmarked}}</span>
+  <!-- Questo bottone se cliccato permette di riniziare la giocata -->
+  <button color="primary" mat-raised-button (click)="onStartNewGame()">
+    <!-- Quando la partita ha inizio verrà mostrata sul bottone uno smile, 
+        se il giocatore perde: verrà visualizzata una faccina triste, 
+        se il giocatore vince: verrà visualizzata una faccina felice -->
+    <i *ngIf="!messaggioHaiPerso && !messaggioHaiVinto" class="material-icons">sentiment_satisfied_alt</i>
+    <i *ngIf="messaggioHaiPerso" class="material-icons">sentiment_very_dissatisfied</i>
+    <i *ngIf="messaggioHaiVinto" class="material-icons">mood</i>
+  </button>
+  <!-- Mostra sul display il tempo che passa -->
+  <span class="box">{{tempoDiGioco}}</span>
+</div>
+<!-- Il messaggio "HAI PERSO!" viene mostrato quando la variabile contenuta nell'ngIf è settata a true  -->
+<div class="messaggio" *ngIf="messaggioHaiPerso"><strong>HAI PERSO!</strong></div>
+<!-- Il messaggio "HAI VINTO!" viene mostrato quando la variabile contenuta nell'ngIf è settata a true  -->
+<div class="messaggioVittoria" *ngIf="messaggioHaiVinto"><strong>HAI VINTO!</strong></div>
+<div class="space"></div>
+<!-- Viene generato il campo da gioco attraverso un doppio ciclo for -->
+<div class="game-box">
+  <div class="verticale" *ngFor="let riga of campoDaGioco.campo; index as h;">
+      <div class="orizzontale" *ngFor="let piastrella of riga; index as j;">
+
+        <!-- Questo bottone indica la singola piastrella sul campo da gioco. 
+          Tramite ngStyle ( = Una direttiva che aggiorna gli stili dell'elemento HTML che lo contiene)
+          se la piastrella cliccata ha una bomba e "messaggioHaiPerso" è true allora le X saranno di colore rosso altrimenti bianco,
+          se la piastrella cliccata non è più cliccabile o "messaggioHaiPerso" o "messaggioHaiVinto" sono true allora la piastrella viene disabilitata, 
+          se la piastrella è cliccata col tasto sinistro del mouse viene chiamato il metodo onClickSuPiastrella(piastrella) dove il parametro piastrella
+           è la piastrella appena cliccata,
+          se la piastrella è cliccata col tasto destro del mouse viene chiamato il metodo onRightClick(piastrella)dove il parametro piastrella è la piastrella
+           appena cliccata e viene aggiunta una icona -->
+        <button class="piastrella" [ngStyle]="{'color': piastrella.hasBomba && messaggioHaiPerso===true ? 'red' : 'white'}" 
+          [disabled]="!piastrella.isClickable || messaggioHaiVinto===true || messaggioHaiPerso===true" 
+          mat-raised-button (click)="onClickSuPiastrella(piastrella)" (contextmenu)="onRightClick(piastrella)">
+            <!-- Se il testo sul bottone è 0 non viene mostrato -->
+            <strong [ngStyle]="{'display': piastrella.testoSulBottone==='0' ? 'none' : 'block'}">
+              <!-- Questa è l'icona bandiera che viene mostrata se si clicca col tasto destro del mouse -->
+              <i [ngStyle]="{'color':piastrella.hasBandiera && messaggioHaiVinto===true ? 'green' : 'black'}" *ngIf ="piastrella.hasBandiera" class="material-icons-flag">flag</i>
+              {{piastrella.testoSulBottone}}
+            </strong>
+        </button>
+        
+      </div>
+  </div>
+</div>

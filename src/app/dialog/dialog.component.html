@@ -1,0 +1,24 @@
+<div class="dialog">
+    <div class="content">
+        <h4>Cambia le dimensioni:</h4>
+        <div class="input">
+            <!-- Per ogni input ho messo un limite min e max e con 'oninput="validity.valid||(value='');"' controlla che l'utente non posso inserire manualmente un valore non valido.
+            Con [ngModel]="..." mostro in input il valore dell'attuale campo da gioco -->
+        <mat-form-field class="number-input">
+            <input required type="number" min="0" max="50" matInput placeholder="Altezza" oninput="validity.valid||(value='');" [ngModel]="this.campoDaGioco.height" #altezza>
+        </mat-form-field>
+        <mat-form-field class="number-input">
+            <input required type="number" min="0" max="50" matInput placeholder="Larghezza" oninput="validity.valid||(value='');" [ngModel]="this.campoDaGioco.width" #larghezza>
+        </mat-form-field>
+        <mat-form-field class="number-input">
+            <input required type="number" min="0" max="50" matInput placeholder="Numero mine" oninput="validity.valid||(value='');" [ngModel]="this.campoDaGioco.mines" #mine>
+        </mat-form-field>
+        <!-- Se il numero di mine inserito è troppo alto viene visualizzato questo messaggi di errore -->
+        <div class="messaggio" *ngIf="errornumeroDiMine">Numero di mine troppo alto</div>
+        <div class="bottoneOk">
+            <!-- Il bottone è disabilitato nel caso in cui i valori di altezza, larghezza e mine sia vuoto -->
+            <button mat-raised-button [disabled]="altezza.value === '' || larghezza.value === '' || mine.value ==='' || altezza.value === ''" color="primary" (click)="onOk(altezza.value, larghezza.value, mine.value)">Ok</button>
+            <button mat-raised-button id='bottoneIndietro' (click)="onIndietro()">Indietro</button>
+        </div>
+    </div>
+</div>
