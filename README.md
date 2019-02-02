@@ -1,6 +1,6 @@
 # Minesweeper
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
+The famous game of Minesweeper built with Angular.
 
 ## Prerequisites
 Before you begin, make sure your development environment includes:
